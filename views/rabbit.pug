@@ -2,13 +2,13 @@ extends layout
 
 block content
   h1= title
-  - const rabbit = ['rabbit_type','size','age']
-  - let results;
+  - const rabbit = results
+  - let results1;
   script.
     function buy(x){
       alert('Purchased Item: ' + x)
    } 
   div(class='container-fluid')
     div(class='row')
-      each results, index in rabbit
-        div(class='col-sm-2' onclick='buy('+index+')') #{results}
+      each results1, index in rabbit
+        div(onclick='buy('+index+')') #{results1}
