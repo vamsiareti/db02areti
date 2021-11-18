@@ -1,0 +1,44 @@
+block content
+  h1(class="style")= title
+
+  
+    - let rabbitid = toShow._id
+    - let area = toShow.area
+    - let cost = toShow.cost
+    - let actionid = "/resource/rabbit/" + rabbitid
+
+    script let actionid = "#{actionid}"
+    div
+      div.row
+        div(class='rabbitAttr mr-3') rabbit ID is:
+        div(class="style rabbitup") #{rabbitid}
+      div.row
+        div(class='rabbitAttr mr-3') rabbit brand is:
+        div(class="style rabbitup") #{area}
+      
+      div.row
+        div(class='rabbitAttr mr-3') rabbit cost is:
+        div(class='style rabbitup') #{cost}
+      
+
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+ 
+  script.
+    function deleteOnid() {
+      console.log("Deleting the Resource")
+      // delete first
+      fetch(actionid, {
+        method: 'DELETE'      // Don't need a body for the delete
+      }).then((resp) => {
+        return resp.json();   // or resp.text() or wrabbitever the server sends
+      }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/rabbit'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+      });
+    }

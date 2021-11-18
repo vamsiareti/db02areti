@@ -1,0 +1,21 @@
+extends layout 
+ 
+block content 
+  h1= title 
+        - let rabbitid = toShow._id 
+        - let rabbit_type = toShow.rabbit_type
+        - let rabbitarea = toShow.area
+        - let rabbitcost = toShow.cost 
+        div 
+        div.row 
+        div(class='rabbitAttr mr-3') rabbit ID is: 
+        div #{rabbitid} 
+        div.row 
+        div(class='rabbitAttr mr-3') rabbit brand is: 
+        div #{rabbit_type} 
+        div.row 
+        div(class='rabbitAttr mr-3') rabbit material is: 
+        div #{rabbitarea} 
+        div.row 
+        div(class='rabbitAttr mr-3') rabbit Cost is: 
+        div #{rabbitcost} 
