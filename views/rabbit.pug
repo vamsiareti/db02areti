@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"rabbit/create\")`
+  button.btn(class="btn-primary m1-1", onclick=create) Create
   h1= title
   - const rabbit = results
   - let results1;
@@ -8,8 +10,12 @@ block content
     div(class="row") 
       each item in rabbit  
         - let destination = `dispatch(\"/rabbit/update?id=${item._id}\")`
+        - let detail=`dispatch(\"/rabbit/detail?id=${item._id}\")`
+        - let de=`dispatch(\"/rabbit/delete?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") Item #{item.rabbit_type}(#{item.area}) is #{item.cost} 
         button.btn( class="btn-primary ml-1", onclick= destination) Update 
+        button.btn( class="btn-secondary ml-2", onclick=detail ) Get Detail page
+            button.btn( class="btn-warning ml-2", onclick=de ) Delete
   script.
     function buy(x){
       alert('Purchased Item: ' + x)
